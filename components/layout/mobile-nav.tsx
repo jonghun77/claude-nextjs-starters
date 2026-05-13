@@ -11,21 +11,10 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
+import { NAV_LINKS } from "@/lib/nav-data"
 
 // 모바일 화면에서만 표시되는 햄버거 메뉴
 // Sheet 컴포넌트(사이드 슬라이드 패널)를 사용
-interface NavLink {
-  readonly href: string
-  readonly label: string
-  readonly external?: boolean
-}
-
-const NAV_LINKS: NavLink[] = [
-  { href: "#features", label: "기능" },
-  { href: "/docs", label: "문서" },
-  { href: "/examples", label: "예제" },
-  { href: "https://github.com", label: "GitHub", external: true },
-]
 
 export function MobileNav() {
   const [open, setOpen] = useState(false)

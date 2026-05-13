@@ -3,20 +3,7 @@ import { Layers } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/layout/theme-toggle"
 import { MobileNav } from "@/components/layout/mobile-nav"
-
-interface NavLink {
-  readonly href: string
-  readonly label: string
-  readonly external?: boolean
-}
-
-// 데스크탑 네비게이션 링크 목록
-const NAV_LINKS: NavLink[] = [
-  { href: "#features", label: "기능" },
-  { href: "/docs", label: "문서" },
-  { href: "/examples", label: "예제" },
-  { href: "https://github.com", label: "GitHub", external: true },
-]
+import { NAV_LINKS } from "@/lib/nav-data"
 
 // sticky top-0: 스크롤해도 상단에 고정
 // bg-background/80 backdrop-blur-sm: 반투명 글래스모피즘 효과

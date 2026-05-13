@@ -1,14 +1,9 @@
 import { AlertCircle, Lightbulb, Info } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { cn, slugify } from "@/lib/utils"
 import type { ContentBlock } from "@/lib/docs-data"
 
 interface DocsContentProps {
   content: readonly ContentBlock[]
-}
-
-// 헤딩 텍스트를 HTML id로 변환 (스크롤 앵커용)
-function slugify(text: string): string {
-  return text.replace(/\s+/g, "-").toLowerCase()
 }
 
 // 구조화된 콘텐츠 블록을 렌더링하는 서버 컴포넌트
@@ -52,8 +47,8 @@ export function DocsContent({ content }: DocsContentProps) {
           case "list":
             return (
               <ul key={i} className="space-y-2 pl-1">
-                {block.items.map((item, j) => (
-                  <li key={j} className="flex items-start gap-2.5 text-muted-foreground">
+                {block.items.map((item) => (
+                  <li key={item} className="flex items-start gap-2.5 text-muted-foreground">
                     <span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary/50" />
                     <span className="leading-relaxed">{item}</span>
                   </li>

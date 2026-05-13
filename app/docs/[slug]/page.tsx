@@ -12,6 +12,7 @@ import {
   getAdjacentDocs,
   type ContentBlock,
 } from "@/lib/docs-data"
+import { slugify } from "@/lib/utils"
 
 // 빌드 타임에 모든 문서 페이지를 정적 생성
 export function generateStaticParams() {
@@ -35,7 +36,7 @@ function extractTocItems(content: readonly ContentBlock[]): TocItem[] {
   for (const block of content) {
     if (block.type === "h2" || block.type === "h3") {
       items.push({
-        id: block.text.replace(/\s+/g, "-").toLowerCase(),
+        id: slugify(block.text),
         text: block.text,
         level: block.type === "h2" ? 2 : 3,
       })
