@@ -4,9 +4,9 @@ import { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
 
 export interface TocItem {
-  id: string
-  text: string
-  level: number
+  readonly id: string
+  readonly text: string
+  readonly level: number
 }
 
 interface DocsTocProps {

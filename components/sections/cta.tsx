@@ -15,6 +15,8 @@ export function Cta() {
       toast.success("명령어가 복사되었습니다!", {
         description: "터미널에 붙여넣기해서 프로젝트를 시작하세요.",
       })
+    }).catch(() => {
+      toast.error("복사에 실패했습니다. 직접 선택해 복사해 주세요.")
     })
   }
 

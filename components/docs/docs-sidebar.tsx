@@ -18,7 +18,8 @@ import {
 // 사이드바 네비게이션 링크 목록 (공통)
 function SidebarNav({ onLinkClick }: { onLinkClick?: () => void }) {
   const pathname = usePathname()
-  const currentSlug = pathname.split("/").pop() ?? ""
+  const segments = pathname.split("/").filter(Boolean)
+  const currentSlug = segments[segments.length - 1] ?? ""
 
   return (
     <nav className="space-y-6">

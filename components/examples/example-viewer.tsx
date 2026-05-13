@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Eye, Code2, Copy, Check } from "lucide-react"
+import { toast } from "sonner"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { EXAMPLE_CODE } from "@/lib/examples-data"
@@ -15,7 +16,7 @@ import {
 } from "./demos"
 
 // 예제 id → 실제 데모 컴포넌트 매핑
-const DEMO_MAP: Record<string, React.ComponentType> = {
+const DEMO_MAP: Record<string, React.ComponentType<Record<string, never>>> = {
   "button-showcase": ButtonShowcaseDemo,
   "login-form": LoginFormDemo,
   "stats-dashboard": StatsDashboardDemo,
@@ -37,9 +38,13 @@ export function ExampleViewer({ exampleId }: ExampleViewerProps) {
   const code = EXAMPLE_CODE[exampleId] ?? ""
 
   async function handleCopy() {
-    await navigator.clipboard.writeText(code)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+    try {
+      await navigator.clipboard.writeText(code)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      toast.error("복사에 실패했습니다.")
+    }
   }
 
   return (
